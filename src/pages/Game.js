@@ -1,23 +1,14 @@
-import {Col, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Row} from "reactstrap";
-import React, {useState} from 'react';
+import {Col, Row} from "reactstrap";
+import WordList from "../components/Game/WordList";
+import Lobby from "../components/Game/Lobby";
 
 function Game(props) {
-    const [open, setOpen] = useState(false);
-    const toggle = () => setOpen((prevState) => !prevState);
-
     return(
         <>
             <Row>
                 <Col style={{width: '33.33vw'}}>
-                    <Dropdown isOpen={open} toggle={toggle} {...props}>
-                        <DropdownToggle caret size="lg">
-                            Submitted Words
-                        </DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem tag={'h6'}>f</DropdownItem>
-                            <DropdownItem>No</DropdownItem>
-                        </DropdownMenu>
-                    </Dropdown>
+                    <WordList margin={'55vh'} />
+                    <Lobby />
                 </Col>
             </Row>
         </>
