@@ -1,17 +1,34 @@
-import {Button, Card, CardText, CardTitle} from "reactstrap";
+import {Button, Card, CardText, Col, Form, Input, Label, Row} from "reactstrap";
 
 function Lobby() {
     return(
-        <>
-            <Card>
-                <CardTitle tag={'h2'}>
-                    Lobby
-                </CardTitle>
-                <Button style={{backgroundColor: '#003ff8', fontSize: '1.3rem', color: '#FFFFFF', borderRadius: '10px', borderColor: 'rgba(0,0,0,0)'}}>
+        <div style={{marginLeft: '6.25%'}}>
+            <Card style={{width: '87.5%', borderColor: '#000000', borderRadius: '16px', borderStyle: 'solid'}}>
+                <Button color={'primary'} style={{width: '75%', alignSelf: 'center', marginTop: '0.5rem', marginBottom: '2rem'}}>
                     Create Lobby
                 </Button>
+                <CardText>
+                    <Form style={{marginBottom: '0.5rem'}}>
+                        <Row>
+                            <Col>
+                                <Label style={{color: '#000000', fontSize: '0.9rem'}}>
+                                    Join Lobby:
+                                </Label>
+                            </Col>
+                            <Col>
+                                <Input type={'text'} style={{width: '100%', marginRight: '2px'}} placeholder={'Enter Code'}/>
+                            </Col>
+                            <Col>
+                                <Button>
+
+                                    Join
+                                </Button>
+                            </Col>
+                        </Row>
+                    </Form>
+                </CardText>
             </Card>
-        </>
+        </div>
     )
 }
 
