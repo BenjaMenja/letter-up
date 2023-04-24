@@ -12,7 +12,7 @@ function Game(props) {
             <Row xs={'3'}>
                 <Col>
                     <WordList margin={'55vh'} />
-                    <Lobby />
+                    <Lobby/>
                 </Col>
                 <Col>
                     <SelectedWord margin={'65vh'}/>
