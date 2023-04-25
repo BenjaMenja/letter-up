@@ -39,7 +39,7 @@ function Game() {
             <Row xs={'3'}>
                 <Col className={'justify-content-center'}>
                     <WordList margin={'55vh'} GameRunning={gameOn} list={wordList.current} Update={listUpdater} Updater={setListUpdater}/>
-                    {JSON.parse(window.localStorage.getItem('options')).lobby.enabled ? <Lobby GameRunning={gameOn}/> : null}
+                    {((window.localStorage.length !== 0) && (JSON.parse(window.localStorage.getItem('options')).lobby.enabled)) ? <Lobby GameRunning={gameOn}/> : null}
                 </Col>
                 <Col>
                     <SelectedWord margin={'60vh'} GameRunning={gameOn} ChangeWord={changeWord} word={chosenWord.current}/>

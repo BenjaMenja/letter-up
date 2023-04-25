@@ -9,7 +9,9 @@ function Timer(props) {
 
     useEffect(() => {
         let options = JSON.parse(window.localStorage.getItem('options'))
-        time.current = (options.timer.min * 60) + (options.timer.sec)
+        if (options !== null) {
+            time.current = (options.timer.min * 60) + (options.timer.sec)
+        }
         if (props.GameRunning) {
             setMinutes(options.timer.min)
             setSeconds(options.timer.sec)
