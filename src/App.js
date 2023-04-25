@@ -17,6 +17,9 @@ function App() {
                 timer: {
                     min: 5,
                     sec: 0
+                },
+                lobby: {
+                    enabled: true
                 }
             }
             window.localStorage.setItem("options", JSON.stringify(options))

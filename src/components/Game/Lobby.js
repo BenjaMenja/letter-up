@@ -1,32 +1,61 @@
-import {Button, Card, CardText, Col, Form, Input, Label, Row} from "reactstrap";
+import {Button, Card, CardText, Input, Label} from "reactstrap";
+import {useState} from "react";
 
-function Lobby() {
-    return(
-        <div style={{marginLeft: '6.25%'}}>
-            <Card style={{width: '87.5%', borderColor: '#000000', borderRadius: '16px', borderStyle: 'solid'}}>
-                <Button color={'primary'} style={{width: '75%', alignSelf: 'center', marginTop: '0.5rem', marginBottom: '2rem'}}>
+
+function Lobby(props) {
+
+    const [inLobby, setInLobby] = useState(false)
+    const validateLobby = () => {
+        let lobbybox = document.getElementById('lobbybox')
+        let lobbyerror = document.getElementById('lobbyerror')
+
+        if (props.GameRunning) {
+            lobbyerror.textContent = 'Error: A game is already in progress.'
+            return
+        }
+        if (lobbybox.value.length !== 4) {
+            lobbyerror.textContent = 'Error: Expected a 4 character code.'
+        } else {
+            lobbyerror.textContent = ''
+            setInLobby(!inLobby)
+        }
+    }
+
+    const createLobby = () => {
+        let lobbyerror = document.getElementById('lobbyerror')
+        if (props.GameRunning) {
+            lobbyerror.textContent = 'Error: A game is already in progress.'
+            return
+        }
+        setInLobby(!inLobby)
+        lobbyerror.textContent = 'Lobby Code: XCPL'
+    }
+
+    return (
+        <div>
+            <h5 id={'lobbyerror'} style={{color: 'red'}}></h5>
+            <Card className={'mx-auto'} style={{width: '87.5%', borderColor: '#000000', borderRadius: '16px', borderStyle: 'solid'}}>
+                {inLobby ? <h5 style={{color: 'green'}}>You joined a lobby!</h5> : <><Button color={'primary'} style={{
+                    width: '75%',
+                    alignSelf: 'center',
+                    marginTop: '0.5rem',
+                    marginBottom: '2rem'
+                }} onClick={createLobby}>
                     Create Lobby
                 </Button>
-                <CardText>
-                    <Form style={{marginBottom: '0.5rem'}}>
-                        <Row>
-                            <Col>
-                                <Label style={{color: '#000000', fontSize: '0.9rem'}}>
-                                    Join Lobby:
-                                </Label>
-                            </Col>
-                            <Col>
-                                <Input type={'text'} style={{width: '100%', marginRight: '2px'}} placeholder={'Enter Code'}/>
-                            </Col>
-                            <Col>
-                                <Button>
+                    <CardText>
+                        <div className={'d-flex'} style={{paddingLeft: '1rem', marginBottom: '0.5rem'}}>
+                            <Label style={{color: '#000000', fontSize: '1rem', marginLeft: '1rem'}}>
+                                Join Lobby:
+                            </Label>
+                            <Input id='lobbybox' type={'text'} style={{width: '60%', marginLeft: '1rem'}}
+                                   placeholder={'Enter Code'}/>
+                            <Button style={{marginLeft: '1rem'}} onClick={validateLobby}>
+                                Join
+                            </Button>
+                        </div>
+                    </CardText></>}
 
-                                    Join
-                                </Button>
-                            </Col>
-                        </Row>
-                    </Form>
-                </CardText>
             </Card>
         </div>
     )
