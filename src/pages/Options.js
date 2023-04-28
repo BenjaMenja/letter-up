@@ -57,10 +57,12 @@ function Options() {
         }
 
         if (err) {
+            document.getElementById('savesettings').style.visibility = 'hidden'
             return
         } else {
             options.current.lobby.enabled = lobbychecked
             window.localStorage.setItem('options', JSON.stringify(options.current))
+            document.getElementById('savesettings').style.visibility = 'visible'
         }
 
     }
@@ -92,6 +94,7 @@ function Options() {
                     </div>
                 </Col>
             </Row>
+            <h5 id='savesettings' style={{color: '#55ff3f', visibility: 'hidden'}} >Settings Saved!</h5>
             <Button color={'primary'} onClick={updateOptions} style={{fontSize: '1.5rem'}}>
                 Save Settings
             </Button>
